@@ -41,9 +41,11 @@ var pusher = new Pusher({
 
 
 app.post('/messages', function(req, res){
-  var message = req.body;
- // res.render('index', { title: 'Message' });
-  pusher.trigger('messages', 'new_message', message);
+  var message = {
+    text: req.body.text,
+    name: req.body.name
+  }
+  pusher.trigger('my-channel', 'my-event', message);
   res.json({success: 200});
 });
 
