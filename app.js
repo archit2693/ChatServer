@@ -42,7 +42,7 @@ var pusher = new Pusher({
 
 app.post('/messages', function(req, res){
   var message = req.body;
-  res.render('index', { title: 'Message' });
+ // res.render('index', { title: 'Message' });
   pusher.trigger('messages', 'new_message', message);
   res.json({success: 200});
 });
